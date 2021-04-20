@@ -16,10 +16,10 @@ class MessageController {
     }
     
     static async create(req, res, next) {
-        const { sender_id, text } = req.body
+        const { sender_id, text, sender } = req.body
 
         try {
-            const createdMessage = await messages.create({sender_id, text})
+            const createdMessage = await messages.create({ sender_id, text, sender })
             res.status(201).send(createdMessage)
         }
         catch (err) {

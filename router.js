@@ -6,6 +6,12 @@ const router = require("express").Router()
 router.route("/login")
     .post(AuthController.login)
 
+router.route("/logout/:id")
+    .get(AuthController.logout)
+
+router.route("/users/:id")
+    .get(AuthController.findOne)
+
 router.route("/messages")
     .get(MessageController.list)
     .post(MessageController.create)

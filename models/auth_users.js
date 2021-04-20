@@ -1,3 +1,4 @@
+const { ObjectID } = require("bson")
 const client = require("../configs/dbconfig")
 const DB_NAME = process.env.MONGODB_NAME
 
@@ -26,6 +27,19 @@ class AuthUsers {
             
                 await collection.insertOne(payload)
                 return payload
+        }
+        catch(err) {
+            return err
+        }
+    }
+
+    async destroy(id) {
+        try {
+            const collection = client
+                .db(DB_NAME)
+                .collection("chatroom_people")
+            
+                return collection.deleteOne({_id: ObjectID(id)})
         }
         catch(err) {
             return err
