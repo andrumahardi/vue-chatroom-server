@@ -21,8 +21,6 @@ app.use(router)
 app.use(errorHandler)
 
 io.on("connection", (client) => {
-    console.log(client.id)
-
     client.on("send message", (chats) => {
         client.broadcast.emit("other sent message", chats)
     })
